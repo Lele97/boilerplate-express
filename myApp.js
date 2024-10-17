@@ -35,13 +35,6 @@ app.get("/:word/echo", (req,res)=>{
   });
 })
 
-/* app.get("/name" ,(req,res)=>{
-  var  {frist = frist, last= last}=req.query;
-  res.json({
-    "name" : frist + " " + last
-  });
-}) */
-
 app.get("/name", function(req, res) {
   // OR you can destructure and rename the keys
   var { first: firstName, last: lastName } = req.query;
@@ -49,6 +42,12 @@ app.get("/name", function(req, res) {
   res.json({
     name: `${firstName} ${lastName}`
   });
+});
+
+app.post("/name", function(req, res) {
+  // Handle the data in the request
+  var string = req.body.first + " " + req.body.last;
+  res.json({ name: string });
 });
 
 app.get(
